@@ -69,6 +69,7 @@
   box-shadow: 1px solid black;
   border: 1px solid black;
   font-weight: bold;
+  border-color: whitesmoke;
   font-size: 15pt;
   
 }
@@ -115,5 +116,14 @@
 }
 .vencedor{
   color: ghostwhite;
+  font-weight: bold;
+}
+footer{
+  position: fixed;
+  bottom: 0;
+  padding: 5px;
+  width: 100vw;
+  text-align: center;
+  background-color: darkcyan;
   font-weight: bold;
 }
