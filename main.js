@@ -143,7 +143,6 @@ tabuleiro.forEach((itemClicado) =>{
         if(!!validacao){
           
             if(validacao && !!containX || !!containO){
-              console.log(item);
               return bot();
             }
             
