@@ -55,7 +55,7 @@
   gap: 1.5rem;
 }
 .gameOver::before{
-  content: 'O Jogo acabou, Gostaria de Reiniciar Agora?';
+  content: 'O Jogo terminou, Um novo começará em instantes!';
   font-size: 2rem;
   padding: 1rem;
   font-weight: bold;
