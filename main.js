@@ -17,16 +17,18 @@ const combinacoes = [
   
   ];
 let checarTurno = true;
+let gameOver = false;
 
 document.addEventListener('click', (event)=>{
   if(event.target.matches('.celula')){
-    jogar(event.target.id);
+    jogar(event.target.id, jogador_X);
+    setTimeout(()=> computador(), 400);
   };
 });
 
-function jogar(id){
+function jogar(id, turno){
   const celula = document.getElementById(id);
-  
+ 
    if(celula.classList.contains('X')|| celula.classList.contains('O')){
      return false;
    }
@@ -53,18 +55,16 @@ function checarVencedor(turno){
   }
   else if(checarEmpate()){
     encerrarJogo();
-  }
-  else{
-    checarTurno = !checarTurno;
   };
 };
 
 function encerrarJogo(vencedor = null){
   
-  const gameOver = document.querySelector('.gameOver');
+  gameOver = true;
+  const gameOverScreen = document.querySelector('.gameOver');
   const vencedorTexto = document.querySelector('.vencedor');
   let clock = 3;
-  gameOver.style.display = 'block';
+  gameOverScreen.style.display = 'block';
   
   if(vencedor){
     vencedorTexto.innerText = vencedor;
@@ -102,3 +102,23 @@ function checarEmpate(){
   
   return x + o == 9 ? true : false;
 };
+ function computador(){
+   let posicoesDisponiveis = [];
+   
+   for(index in celulas){
+     
+     if(!isNaN(index)){
+       
+       if(!celulas[index].classList.contains('X') && !celulas[index].classList.contains('O')){
+         
+         posicoesDisponiveis.push(index);
+       };
+     };
+   };
+   
+   const posicaoAleatoria = Math.floor(Math.random() * posicoesDisponiveis.length);
+   
+   if(!gameOver){
+     jogar(posicoesDisponiveis[posicaoAleatoria], jogador_O);
+   };
+ };
