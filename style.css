@@ -12,6 +12,7 @@
   align-items: center;
   background-color: darkslategray;
   color: white;
+  
 }
 .avisos{
   position: absolute;
@@ -109,10 +110,13 @@
 .celula.X{
   color: darkblue;
   font-weight: bold;
+  transition: opacity 1s ease;
 }
 .celula.O{
   color: darkred;
   font-weight: bold;
+  transition: opacity 1s ease;
+
 }
 .vencedor{
   color: ghostwhite;
