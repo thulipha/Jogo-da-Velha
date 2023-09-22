@@ -113,7 +113,6 @@ function player(celula, turno){
   if(!checarCelulaJogada(celula)){
     celula.innerText = turno;
     celula.classList.add(turno);
-    celula.style.opacity = 1;
   };
 };
 
