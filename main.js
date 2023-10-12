@@ -119,6 +119,7 @@ function player(celula, turno){
 function computador(){
  
   const posicaoAleatoria = Math.floor(Math.random() * movimentos().length);
+  
    
   if(!gameOver && !celulaJogada){
     
