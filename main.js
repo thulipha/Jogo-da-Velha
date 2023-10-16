@@ -120,7 +120,6 @@ function computador(){
  
   const posicaoAleatoria = Math.floor(Math.random() * movimentos().length);
   
-   
   if(!gameOver && !celulaJogada){
     
    jogar(movimentos()[posicaoAleatoria],jogador_O);
