@@ -20,6 +20,7 @@
   color: darkred;
   display: none;
 }
+
 .titulo{
   position: absolute;
   width: 100vw;
@@ -109,10 +110,13 @@
 .celula.X{
   color: darkblue;
   font-weight: bold;
+  transition: opacity 1s ease;
 }
 .celula.O{
   color: darkred;
   font-weight: bold;
+  transition: opacity 1s ease;
+
 }
 .vencedor{
   color: ghostwhite;

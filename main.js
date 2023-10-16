@@ -16,33 +16,38 @@ const combinacoes = [
   [0,4,8]
   
   ];
-let checarTurno = true;
 let gameOver = false;
+let celulaJogada = false;
 
 document.addEventListener('click', (event)=>{
   if(event.target.matches('.celula')){
     jogar(event.target.id, jogador_X);
-    setTimeout(()=> computador(), 400);
+    computador();
+
   };
 });
 
 function jogar(id, turno){
   const celula = document.getElementById(id);
- 
-   if(celula.classList.contains('X')|| celula.classList.contains('O')){
-     return false;
-   }
-   else{
-     mudarTurno();
-     celula.innerText = turno;
-     celula.classList.add(turno);
-     checarVencedor(turno);
-   };
+  
+  player(celula, turno);
+  checarVencedor(turno);
+
 };
 
-function mudarTurno(){
-    turno = checarTurno ? jogador_X : jogador_O;
-}
+function checarCelulaJogada(celula){
+  const contemX = celula.classList.contains('X');
+  const contemO = celula.classList.contains('O');
+  
+  if(contemX || contemO){
+    celulaJogada = true;
+    return true;
+  }
+  else {
+    return celulaJogada = false;
+  };
+};
+
 function checarVencedor(turno){
   
   const vencedor = combinacoes.some((comb)=>{
@@ -102,23 +107,38 @@ function checarEmpate(){
   
   return x + o == 9 ? true : false;
 };
- function computador(){
+
+function player(celula, turno){
+  
+  if(!checarCelulaJogada(celula)){
+    celula.innerText = turno;
+    celula.classList.add(turno);
+  };
+};
+
+function computador(){
+ 
+  const posicaoAleatoria = Math.floor(Math.random() * movimentos().length);
+  
+  if(!gameOver && !celulaJogada){
+    
+   jogar(movimentos()[posicaoAleatoria],jogador_O);
+ };
+ 
+ function movimentos(){
    let posicoesDisponiveis = [];
    
    for(index in celulas){
-     
-     if(!isNaN(index)){
        
-       if(!celulas[index].classList.contains('X') && !celulas[index].classList.contains('O')){
+     if(!isNaN(index)){
          
-         posicoesDisponiveis.push(index);
+       if(!celulas[index].classList.contains('X') && !celulas[index].classList.contains('O')){
+           
+          posicoesDisponiveis.push(index);
+         };
        };
      };
-   };
-   
-   const posicaoAleatoria = Math.floor(Math.random() * posicoesDisponiveis.length);
-   
-   if(!gameOver){
-     jogar(posicoesDisponiveis[posicaoAleatoria], jogador_O);
-   };
+     
+    return posicoesDisponiveis;
  };
+};
